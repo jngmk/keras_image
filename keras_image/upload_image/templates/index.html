@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="">
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900&display=swap&subset=korean"
+      rel="stylesheet">
+  <title>닮은꼴 찾기</title>
+  <style>
+    body {
+        font-family: 'Noto Sans KR', sans-serif;
+        font-weight: 100;
+        font-size: 45px;
+        padding: 0;
+        margin: 0;
+    }
+
+    .container {
+        position: fixed;
+        top: 25%;
+        left: 40%;
+    }
+
+    form {
+        font-size: 15px;
+    }
+
+    #image_btn {
+
+        border: 1px solid white;
+        background-color: rgba(0, 0, 0, 0);
+        color: blakc;
+        padding: 5px;
+        font-size: 45px;
+    }
+
+    #image_btn:hover {
+        color: dimgray;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+      <p>
+          <div>나의</div>
+          <span style="font-weight: 300">닮은꼴</span><span>을</span>
+      </p>
+      <form action="/loading/" method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          {{ form.as_p }}
+          {% comment %} <p>
+            <input id="upload_image" type="file" name="image">
+          </p> {% endcomment %}
+          <button id="image_btn" type="submit" value="upload">확인하러 가기</button>
+      </form>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
