@@ -93,14 +93,31 @@ def result(request):
     im = numpy.reshape(alignedFace, (1,224,224,3))/255
     # print('12')
     # print(im)
-    face_name = model.predict(im)
+    face_name = list(model.predict(im)[0])
     # print('13')
-    train_gen = ['AhnJaeHyun', 'AhnYongJun', 'AnSungKi', 'Andy', 'BaeJongwook', 'BoGyum', 'ByunYoHan', 'ChaEunWoo', 'ChaSeungWon', 'ChaTaeHyun', 'ChaeYoungIn', 'ChoBoa', 'ChoSeungWoo', 'ChoiSooJong', 'ChoiYeoJin', 'ChoiYooJung', 'ChuSangMi', 'ChungHa', 'Din', 'GongYoo', 'HaChunHwa', 'HaSeokJin', 'HanBoBae', 'HanChaeAh', 'HanChaeYoung', 'HanHaeJin(model)', 'HanJiHae', 'HanYaeSeul', 'HanYeoWoon', 'HeoGaYoon', 'HongSuHyun', 'HyaeRi', 'IRIn', 'JangNaRa', 'JangWonYoung', 'JeongKook', 'JiChangWook', 'JiMin', 'JiSangRyul', 'JiSeokJin', 'JiSooWon', 'JungIlWoo', 'JungTaeWoo', 'KanMiYeon', 'KangHoDong', 'KimBum', 'KimDaHyeon', 'KimDongHyun', 'KimHaOn', 'KimHyangKi', 'KimRaeWon', 'KimSooHyun', 'KimSooMi', 'KimSungRyung', 'KimYooJung', 'KoASung', 'KoJooWon', 'KongHyoJin', 'KooHaeSun', 'Kunst', 'KyunMiri', 'LeeKyungKyu', 'LeeSeungKi', 'LeeSeungWoo', 'LeeSungKyung', 'MinHyoRin', 'MoMo', 'NaYeon', 'NamHeeSeok', 'NamJuHyeok', 'Nancy', 'OnYoo', 'ParkBoGum', 'ParkBoYoung', 'ParkCheolMin', 'ParkEunBin', 'ParkHyoSin', 'ParkJiSung', 'ParkJunKyu', 'ParkJungHoon', 'ParkMiSeon', 'ParkSinHae', 'ParkSinYang', 'SaNa', 'SeoInKook', 'SeoKangJun', 'SeongSo', 'SeulKi', 'SoJin', 'SonHeungMin', 'SongHaeKyo', 'SongJungKi', 'SoyHyun', 'SulHyun', 'SunMi', 'SungJae', 'TaeJinA', 'TaeYeon', 'TakJaeHoon', 'V', 'YangJiWon', 'YeJiWon', 'YeoJinKoo', 'YeonWoo', 'YoanaJung', 'YooBin', 'YooHaeJin', 'YooInYeong', 'YooJunSang', 'YooSeungHo', 'YoonEunHye', 'YoonSiYun', 'YounAh', 'YounHa', 'YuRa', 'iu']
+    names = ['AhnJaeHyun', 'AhnYongJun', 'AnSungKi', 'Andy', 'BaeJongwook', 'BoGyum', 'ByunYoHan', 'ChaEunWoo', 'ChaSeungWon', 'ChaTaeHyun', 'ChaeYoungIn', 'ChoBoa', 'ChoSeungWoo', 'ChoiSooJong', 'ChoiYeoJin', 'ChoiYooJung', 'ChuSangMi', 'ChungHa', 'Din', 'GongYoo', 'HaChunHwa', 'HaSeokJin', 'HanBoBae', 'HanChaeAh', 'HanChaeYoung', 'HanHaeJin(model)', 'HanJiHae', 'HanYaeSeul', 'HanYeoWoon', 'HeoGaYoon', 'HongSuHyun', 'HyaeRi', 'IRIn', 'JangNaRa', 'JangWonYoung', 'JeongKook', 'JiChangWook', 'JiMin', 'JiSangRyul', 'JiSeokJin', 'JiSooWon', 'JungIlWoo', 'JungTaeWoo', 'KanMiYeon', 'KangHoDong', 'KimBum', 'KimDaHyeon', 'KimDongHyun', 'KimHaOn', 'KimHyangKi', 'KimRaeWon', 'KimSooHyun', 'KimSooMi', 'KimSungRyung', 'KimYooJung', 'KoASung', 'KoJooWon', 'KongHyoJin', 'KooHaeSun', 'Kunst', 'KyunMiri', 'LeeKyungKyu', 'LeeSeungKi', 'LeeSeungWoo', 'LeeSungKyung', 'MinHyoRin', 'MoMo', 'NaYeon', 'NamHeeSeok', 'NamJuHyeok', 'Nancy', 'OnYoo', 'ParkBoGum', 'ParkBoYoung', 'ParkCheolMin', 'ParkEunBin', 'ParkHyoSin', 'ParkJiSung', 'ParkJunKyu', 'ParkJungHoon', 'ParkMiSeon', 'ParkSinHae', 'ParkSinYang', 'SaNa', 'SeoInKook', 'SeoKangJun', 'SeongSo', 'SeulKi', 'SoJin', 'SonHeungMin', 'SongHaeKyo', 'SongJungKi', 'SoyHyun', 'SulHyun', 'SunMi', 'SungJae', 'TaeJinA', 'TaeYeon', 'TakJaeHoon', 'V', 'YangJiWon', 'YeJiWon', 'YeoJinKoo', 'YeonWoo', 'YoanaJung', 'YooBin', 'YooHaeJin', 'YooInYeong', 'YooJunSang', 'YooSeungHo', 'YoonEunHye', 'YoonSiYun', 'YounAh', 'YounHa', 'YuRa', 'iu']
     # print('14')
-    # rank1 = os.path.join(settings.OUTPUT_ROOT, f'{list(train_gen)[numpy.argmax(face_name)]}.jpg')
-    rank1 = list(train_gen)[numpy.argmax(face_name)]
-    # print('15')
-    rank5 = sorted(face_name[0], reverse=True)[:5]
+    # rank1 = os.path.join(settings.OUTPUT_ROOT, f'{list(names)[numpy.argmax(face_name)]}.jpg')
+    rank1 = names[face_name.index(sorted(face_name, reverse=True)[0])]
+    rank2 = names[face_name.index(sorted(face_name, reverse=True)[1])]
+    rank3 = names[face_name.index(sorted(face_name, reverse=True)[2])]
+    rank4 = names[face_name.index(sorted(face_name, reverse=True)[3])]
+    rank5 = names[face_name.index(sorted(face_name, reverse=True)[4])]
+
+    probs1 = sorted(face_name, reverse=True)[0]
+    probs2 = sorted(face_name, reverse=True)[1]
+    probs3 = sorted(face_name, reverse=True)[2]
+    probs4 = sorted(face_name, reverse=True)[3]
+    probs5 = sorted(face_name, reverse=True)[4]
+
+    res = {
+    'rank1':rank1,
+    'rank2':rank2,
+    'rank3':rank3,
+    'rank4':rank4,
+    'rank5':rank5,
+    }
     # print('16')
-    
-    return render(request, 'result.html', {'rank1':rank1, 'rank5':rank5})
+    # print(rank5)
+    print(probs1)
+    return render(request, 'result.html', res)
