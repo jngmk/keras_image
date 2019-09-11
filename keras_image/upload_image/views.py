@@ -35,10 +35,6 @@ class CreateImageView(CreateView):
     success_url = reverse_lazy('upload.html')
 
 
-# def index(request):
-#     return render(request, 'index.html')
-
-
 def upload(request):
     if request.method == 'POST':
         form = ImageUploadForm(request.POST, request.FILES)
@@ -64,7 +60,7 @@ def result(request):
     # print('1')
     test_image_list = list(os.listdir(settings.IMAGE_ROOT))
     # print('2')
-    print(test_image_list)
+    print(11111, test_image_list)
     test_img = test_image_list[-1]
     # test_img = os.path.join(settings.MEDIA_ROOT, test_img)
     # print('3')
@@ -116,8 +112,9 @@ def result(request):
     'rank3':rank3,
     'rank4':rank4,
     'rank5':rank5,
+    'input_image':test_img,
     }
     # print('16')
     # print(rank5)
-    print(probs1)
+    # print(probs1)
     return render(request, 'result.html', res)
