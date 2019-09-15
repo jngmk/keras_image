@@ -31,8 +31,8 @@ from PIL import Image as PImage
 class CreateImageView(CreateView):
     model = Image
     form_class = ImageUploadForm
-    template_name = 'index.html'
-    success_url = reverse_lazy('upload.html')
+    template_name = 'upload_image/index.html'
+    success_url = reverse_lazy('upload_image/upload.html')
 
 
 def upload(request):
@@ -48,7 +48,7 @@ def upload(request):
                 fs.delete(del_img)
             filename = fs.save(imagefile.name, imagefile)
             uploaded_file_url = fs.url(filename)
-            return render(request, 'upload.html', {'uploaded_file_url': uploaded_file_url})
+            return render(request, 'upload_image/upload.html', {'uploaded_file_url': uploaded_file_url})
 
     return HttpResponseForbidden('Allowed only by POST')
 
@@ -117,4 +117,4 @@ def result(request):
     # print('16')
     # print(rank5)
     # print(probs1)
-    return render(request, 'result.html', res)
+    return render(request, 'upload_image/result.html', res)

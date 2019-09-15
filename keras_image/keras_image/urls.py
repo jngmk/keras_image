@@ -17,15 +17,13 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from upload_image import views
-from upload_image.views import CreateImageView
+
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     # path('', views.index),
-    path('', CreateImageView.as_view()),
-    path('loading/', views.upload),
-    path('result/', views.result),
+    path('upload_image', include('upload_image.urls')),
 ]
 
 
