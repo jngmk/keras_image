@@ -33,6 +33,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     'localhost',
     '.ap-northeast-2.compute.amazonaws.com',
+    '127.0.0.1',
 ]
 
 
@@ -65,7 +66,7 @@ ROOT_URLCONF = 'keras_image.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'keras_image', 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

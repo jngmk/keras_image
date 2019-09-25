@@ -4,10 +4,7 @@ from django.http import HttpResponseRedirect, HttpResponseForbidden
 from django import forms
 from django.core.files.storage import FileSystemStorage
 from django.conf import settings
-from django.views.generic import CreateView
-from django.urls import reverse_lazy
 from .models import Image
-from .forms import ImageUploadForm
 import numpy as numpy
 from skimage import io
 from skimage.transform import resize
@@ -28,27 +25,22 @@ from PIL import Image as PImage
 
 # Create your views here.
 
-class CreateImageView(CreateView):
-    model = Image
-    form_class = ImageUploadForm
-    template_name = 'upload_image/index.html'
-    success_url = reverse_lazy('upload_image/upload.html')
+def index(request):
+    return render(request, 'upload_image/index.html')    
 
 
 def upload(request):
     if request.method == 'POST':
-        form = ImageUploadForm(request.POST, request.FILES)
-        if form.is_valid():
-            imagefile = request.FILES['image']
-            url_location = os.path.join(settings.MEDIA_ROOT, 'images')
-            fs = FileSystemStorage(location=f'{url_location}')
-            del_image_list = list(os.listdir(settings.IMAGE_ROOT))
-            if len(del_image_list) > 0:
-                del_img = del_image_list[0]
-                fs.delete(del_img)
-            filename = fs.save(imagefile.name, imagefile)
-            uploaded_file_url = fs.url(filename)
-            return render(request, 'upload_image/upload.html', {'uploaded_file_url': uploaded_file_url})
+        imagefile = request.FILES.get('image')
+        url_location = os.path.join(settings.MEDIA_ROOT, 'images')
+        fs = FileSystemStorage(location=f'{url_location}')
+        del_image_list = list(os.listdir(settings.IMAGE_ROOT))
+        if len(del_image_list) > 0:
+            del_img = del_image_list[0]
+            fs.delete(del_img)
+        filename = fs.save(imagefile.name, imagefile)
+        uploaded_file_url = fs.url(filename)
+        return render(request, 'upload_image/upload.html', {'uploaded_file_url': uploaded_file_url})
 
     return HttpResponseForbidden('Allowed only by POST')
 
@@ -107,13 +99,15 @@ def result(request):
     probs5 = sorted(face_name, reverse=True)[4]
 
     res = {
-    'rank1':rank1,
-    'rank2':rank2,
-    'rank3':rank3,
-    'rank4':rank4,
-    'rank5':rank5,
-    'input_image':test_img,
+        'MEDIA_URL':settings.MEDIA_URL,
+        'rank1':rank1,
+        'rank2':rank2,
+        'rank3':rank3,
+        'rank4':rank4,
+        'rank5':rank5,
+        'input_image':test_img,
     }
+    print(settings.STATIC_URL)
     # print('16')
     # print(rank5)
     # print(probs1)

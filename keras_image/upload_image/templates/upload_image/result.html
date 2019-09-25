@@ -1,62 +1,87 @@
-{% load static %}
+{% extends 'base.html' %}
 
-<!DOCTYPE tml>
-<html lang="ko">
+{% block title %}닮은꼴 찾기 결과{% endblock title %}
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900&display=swap&subset=korean"
-      rel="stylesheet">
-  <title>닮은꼴 찾기 결과</title>
-</head>
-
-<body>
-  {% comment %} <ul>
-    <img src="{{ input_image }}">
-  </ul> {% endcomment %}
-  <div>input=<img src="../../media/images/{{ input_image }}" alt="input_image" width="90" height="120"></div>
+{% block body %}
+  <div>input=<img src="{{ MEDIA_URL }}images/{{ input_image }}" alt="input_image" width="90" height="120"></div>
   <div>rank1="{{ rank1 }}"</div>
-  {% comment %} <img src="{% static 'output/{{ rank1 }}.jpg' %}" alt="연예인 닮은꼴"> {% endcomment %}
-  
-   <div class="container-fluid">
-    <h2>2. Grid container-fluid</h2>
+
+  {% comment %} responsive {% endcomment %}
+  <div class="container-fluid mt-5">
     <div class="row">
-      <div class="square col-4">
-        <img src="{{ STATIC_URL }}/output{{ rank1 }}.jpg" alt="연예인 닮은꼴">
+      <div class="col-lg-6 col-md-6 col-sm-12 col-12 mt-3">
+        <div class="container">
+          <div class="card">
+            <img src="{{ base }}output/{{ rank1 }}.jpg" alt="연예인 닮은꼴" class="card-img-top" alt="닮은꼴1">
+            {% comment %} <div class="card-body">
+              <h4>라이온킹 <br>
+                <div class="badge badge-dark">8.70</div>
+              </h4>
+              <span class="subtitleunderline my-3"></span>
+              <p class="card-text">애니메이션<br>개봉일:2019.07.17.</p>
+              <a href="https://movie.naver.com/movie/bi/mi/basic.nhn?code=169637" target="_blank" class="btn btn-outline-secondary">영화정보
+                보러가기</a>
+            </div> {% endcomment %}
+          </div>
+        </div>
       </div>
-      <div class="square col-4">
-        <img src="{{ STATIC_URL }}/output{{ rank2 }}.jpg" alt="연예인 닮은꼴">
+      <div class="col-lg-6 col-md-6 col-sm-12 col-12 mt-3">
+        <div class="container">
+          <p>설명</p>
+        </div>
       </div>
-      <div class="square col-4">
-        <img src="{{ STATIC_URL }}/output{{ rank3 }}.jpg" alt="연예인 닮은꼴">
+      <div class="col-lg-3 col-md-4 col-sm-6 col-12 mt-3">
+        <div class="container">
+          <div class="card">
+            <img src="{{ base }}output/{{ rank2 }}.jpg" class="card-img-top" alt="닮은꼴2">
+            <div class="card-body">
+              <h4>알라딘 <br>
+                <div class="badge badge-dark">9.45</div>
+              </h4>
+              <span class="subtitleunderline my-3"></span>
+              <p class="card-text">모험<br>개봉일:2019.05.23.</p>
+              <a href="https://movie.naver.com/movie/bi/mi/basic.nhn?code=163788" target="_blank" class="btn btn-outline-secondary">영화정보
+                보러가기</a>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+      <div class="col-lg-4 col-md-4 col-sm-12 col-12 mt-3">
+        <div class="container">
+          <div class="card">
+            <img src="{{ base }}output/{{ rank3 }}.jpg" class="card-img-top" alt="닮은꼴3">
+            <div class="card-body">
+              <h4>레드슈즈 <br>
+                <div class="badge badge-dark">9.24</div>
+              </h4>
+              <span class="subtitleunderline my-3"></span>
+              <p class="card-text">애니메이션<br>개봉일:2019.07.25.</p>
+              <a href="https://movie.naver.com/movie/bi/mi/basic.nhn?code=164907" target="_blank" class="btn btn-outline-secondary">영화정보
+                보러가기</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-12 col-12 mt-3">
+        <div class="container">
+          <div class="card">
+            <img src="{{ base }}output/{{ rank4 }}.jpg" class="card-img-top" alt="닮은꼴4">
+            <div class="card-body">
+              <h4>엑시트 <br>
+                <div class="badge badge-dark">9.07</div>
+              </h4>
+              <span class="subtitleunderline my-3"></span>
+              <p class="card-text">액션<br>개봉일:2019.07.31.</p>
+              <a href="https://movie.naver.com/movie/bi/mi/basic.nhn?code=174903" target="_blank" class="btn btn-outline-secondary">영화정보
+                보러가기</a>
+            </div>
+          </div>
+        </div>
+      </div>
   </div>
-  {% comment %} <img src="../static/output/{{ rank1 }}.jpg" alt="연예인 닮은꼴">
-  <h1>
-    {{ rank2 }} 
-    {{ rank3 }}
-    {{ rank4 }}
-    {{ rank5 }}
-  </h1> {% endcomment %}
+
   <form action="/">
     <button>되돌아가기</button>
   </form>
 
-  <!-- Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
-</body>
-
-</html>
+{% endblock body %}
