@@ -3,30 +3,30 @@
 {% block title %}닮은꼴찾기{% endblock title %}
 {% block style %}
 body {
-    font-family: 'Noto Sans KR', sans-serif;
-    font-weight: 100;
-    font-size: 45px;
-    padding: 0;
-    margin: 0;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 100;
+  font-size: 45px;
+  padding: 0;
+  margin: 0;
 }
 
 .container {
-    position: fixed;
-    top: 25%;
-    left: 40%;
+  position: fixed;
+  top: 25%;
+  left: 40%;
 }
 
 form {
-    font-size: 15px;
+  font-size: 15px;
 }
 
 #image_btn {
 
-    border: 1px solid white;
-    background-color: rgba(0, 0, 0, 0);
-    color: blakc;
-    padding: 5px;
-    font-size: 45px;
+  border: 1px solid white;
+  background-color: rgba(0, 0, 0, 0);
+  color: blakc;
+  padding: 5px;
+  font-size: 45px;
 }
 
 #image_btn:hover {
@@ -36,14 +36,15 @@ form {
 
 {% block body %}
 <div class="container">
-    <p>
-        <div>나의</div>
-        <span style="font-weight: 300">닮은꼴</span><span>을</span>
-    </p>
-    <form action="{% url 'upload_image:loading' %}"method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        <input type="file" name="image" id="image"><br>
-        <button id="image_btn" type="submit" value="upload">확인하러 가기</button>
-    </form>
+  <p>
+    <div>나의</div>
+    <span style="font-weight: 300">닮은꼴</span><span>을</span>
+  </p>
+  <form action="{% url 'upload_image:loading' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="file" name="image" id="image"><br>
+    <button id="image_btn" type="submit" value="upload">확인하러 가기</button>
+  </form>
 </div>
 {% endblock body %}

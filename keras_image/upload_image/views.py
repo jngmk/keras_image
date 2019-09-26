@@ -5,6 +5,7 @@ from django import forms
 from django.core.files.storage import FileSystemStorage
 from django.conf import settings
 from .models import Image
+from .forms import ImageUploadForm
 import numpy as numpy
 from skimage import io
 from skimage.transform import resize
@@ -31,16 +32,18 @@ def index(request):
 
 def upload(request):
     if request.method == 'POST':
-        imagefile = request.FILES.get('image')
-        url_location = os.path.join(settings.MEDIA_ROOT, 'images')
-        fs = FileSystemStorage(location=f'{url_location}')
-        del_image_list = list(os.listdir(settings.IMAGE_ROOT))
-        if len(del_image_list) > 0:
-            del_img = del_image_list[0]
-            fs.delete(del_img)
-        filename = fs.save(imagefile.name, imagefile)
-        uploaded_file_url = fs.url(filename)
-        return render(request, 'upload_image/upload.html', {'uploaded_file_url': uploaded_file_url})
+        form = ImageUploadForm(request.POST, request.FILES)
+        if form.is_valid():
+            imagefile = request.FILES['image']
+            url_location = os.path.join(settings.MEDIA_ROOT, 'images')
+            fs = FileSystemStorage(location=f'{url_location}')
+            del_image_list = list(os.listdir(settings.IMAGE_ROOT))
+            if len(del_image_list) > 0:
+                del_img = del_image_list[0]
+                fs.delete(del_img)
+            filename = fs.save(imagefile.name, imagefile)
+            uploaded_file_url = fs.url(filename)
+            return render(request, 'upload_image/upload.html', {'uploaded_file_url': uploaded_file_url})
 
     return HttpResponseForbidden('Allowed only by POST')
 
