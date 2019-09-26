@@ -45,7 +45,7 @@ def upload(request):
             uploaded_file_url = fs.url(filename)
             return render(request, 'upload_image/upload.html', {'uploaded_file_url': uploaded_file_url})
 
-    return HttpResponseForbidden('Allowed only by POST')
+    return HttpResponseForbidden('잘못된 접근입니다.')
 
 
 def result(request):
