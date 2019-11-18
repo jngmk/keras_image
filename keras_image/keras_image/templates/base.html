@@ -16,10 +16,33 @@
   <title>{% block title %}{% endblock title %}</title>
   <style>
   {% block style %}
+    html, body {
+      height: 100%;
+    }
+
+    .viewport {
+      height: 100%;
+    }
+
+    .vertical-center {
+      min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+      min-height: 100vh; /* These two lines are counted as one :-)       */
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .flex-text-center {
+      max-width: 50%;
+    }
   {% endblock style %}
   </style>
 </head>
 <body>
+  <nav class="navbar fixed-top navbar-light bg-light">
+    <a class="navbar-brand" href="{% url 'upload_image:index' %}">닮은꼴찾기</a>
+  </nav>
   {% block body %}
   {% endblock body %}
   <!-- Bootstrap JS -->

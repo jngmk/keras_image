@@ -2,19 +2,19 @@
 
 {% block title %}닮은꼴찾기{% endblock title %}
 {% block style %}
-body {
+.index-container {
   font-family: 'Noto Sans KR', sans-serif;
   font-weight: 100;
   font-size: 45px;
   padding: 0;
   margin: 0;
 }
-
+{% comment %} 
 .container {
   position: fixed;
   top: 25%;
   left: 40%;
-}
+} {% endcomment %}
 
 form {
   font-size: 15px;
@@ -35,7 +35,7 @@ form {
 {% endblock style %}
 
 {% block body %}
-<div class="container">
+<div class="container index-container vertical-center">
   <p>
     <div>나의</div>
     <span style="font-weight: 300">닮은꼴</span><span>을</span>

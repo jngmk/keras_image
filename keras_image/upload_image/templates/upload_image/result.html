@@ -3,85 +3,64 @@
 {% block title %}닮은꼴 찾기 결과{% endblock title %}
 
 {% block body %}
-  <div>input=<img src="{{ MEDIA_URL }}images/{{ input_image }}" alt="input_image" width="90" height="120"></div>
-  <div>rank1="{{ rank1 }}"</div>
+  {% comment %} <div>input=<img src="{{ MEDIA_URL }}images/{{ input_image }}" alt="input_image" width="90" height="120"></div>
+  <div>rank1="{{ rank1 }}"</div> {% endcomment %}
 
   {% comment %} responsive {% endcomment %}
-  <div class="container mt-5">
+  <div class="container vertical-center">
     <div class="row">
-      <div class="col-lg-6 col-md-6 col-sm-12 col-12 mt-3">
+      <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt-3">
         <div class="container">
-          <div class="card">
+          <div class="card border-0">
             <img src="{{ base }}output/crop/{{ rank1 }}.jpg" alt="연예인 닮은꼴" class="card-img-top" alt="닮은꼴1">
-            {% comment %} <div class="card-body">
-              <h4>라이온킹 <br>
-                <div class="badge badge-dark">8.70</div>
+            <div class="card-body">
+              <h4>{{ name1 }} 
+                <div class="badge badge-dark">{{ probs1|floatformat:0 }}%</div>
               </h4>
-              <span class="subtitleunderline my-3"></span>
-              <p class="card-text">애니메이션<br>개봉일:2019.07.17.</p>
-              <a href="https://movie.naver.com/movie/bi/mi/basic.nhn?code=169637" target="_blank" class="btn btn-outline-secondary">영화정보
-                보러가기</a>
-            </div> {% endcomment %}
+            </div>
           </div>
         </div>
       </div>
-      <div class="col-lg-6 col-md-6 col-sm-12 col-12 mt-3">
+      <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt-3">
         <div class="container">
-          <p>설명</p>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-4 col-sm-6 col-12 mt-3">
-        <div class="container">
-          <div class="card">
+          <div class="card border-0">
             <img src="{{ base }}output/crop/{{ rank2 }}.jpg" class="card-img-top" alt="닮은꼴2">
             <div class="card-body">
-              <h4>알라딘 <br>
-                <div class="badge badge-dark">9.45</div>
+              <h4>{{ name2 }} 
+                <div class="badge badge-dark">{{ probs2|floatformat:0 }}%</div>
               </h4>
-              <span class="subtitleunderline my-3"></span>
-              <p class="card-text">모험<br>개봉일:2019.05.23.</p>
-              <a href="https://movie.naver.com/movie/bi/mi/basic.nhn?code=163788" target="_blank" class="btn btn-outline-secondary">영화정보
-                보러가기</a>
             </div>
           </div>
         </div>
       </div>
-      <div class="col-lg-4 col-md-4 col-sm-12 col-12 mt-3">
-        <div class="container">
-          <div class="card">
+      <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt-3">
+        <div class="container ">
+          <div class="card border-0">
             <img src="{{ base }}output/crop/{{ rank3 }}.jpg" class="card-img-top" alt="닮은꼴3">
             <div class="card-body">
-              <h4>레드슈즈 <br>
-                <div class="badge badge-dark">9.24</div>
+              <h4>{{ name3 }} 
+                <div class="badge badge-dark">{{ probs3|floatformat:0 }}%</div>
               </h4>
-              <span class="subtitleunderline my-3"></span>
-              <p class="card-text">애니메이션<br>개봉일:2019.07.25.</p>
-              <a href="https://movie.naver.com/movie/bi/mi/basic.nhn?code=164907" target="_blank" class="btn btn-outline-secondary">영화정보
-                보러가기</a>
             </div>
           </div>
         </div>
       </div>
-      <div class="col-lg-4 col-md-4 col-sm-12 col-12 mt-3">
+      <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt-3">
         <div class="container">
-          <div class="card">
+          <div class="card border-0">
             <img src="{{ base }}output/crop/{{ rank4 }}.jpg" class="card-img-top" alt="닮은꼴4">
             <div class="card-body">
-              <h4>엑시트 <br>
-                <div class="badge badge-dark">9.07</div>
+              <h4>{{ name4 }} 
+                <div class="badge badge-dark">{{ probs4|floatformat:0 }}%</div>
               </h4>
-              <span class="subtitleunderline my-3"></span>
-              <p class="card-text">액션<br>개봉일:2019.07.31.</p>
-              <a href="https://movie.naver.com/movie/bi/mi/basic.nhn?code=174903" target="_blank" class="btn btn-outline-secondary">영화정보
-                보러가기</a>
             </div>
           </div>
         </div>
       </div>
   </div>
 
-  <form action="/">
-    <button>되돌아가기</button>
-  </form>
+  {% comment %} <form action="{% url 'upload_image:index' %}">
+    <button class="btn btn-dark">되돌아가기</button>
+  </form> {% endcomment %}
 
 {% endblock body %}

@@ -144,12 +144,12 @@ MODEL_ROOT = os.path.join(BASE_DIR, 'pretrainedModel')
 
 # json: model.architecture / h5: weight
 
-json_file=open(f'{MODEL_ROOT}/model.json','r')
+json_file=open('{}/model.json'.format(MODEL_ROOT),'r')
 loaded_json=json_file.read()
 json_file.close()
 
 model=model_from_json(loaded_json)
-model.load_weights(f'{MODEL_ROOT}/model.h5', by_name=True)
+model.load_weights('{}/model.h5'.format(MODEL_ROOT), by_name=True)
 model._make_predict_function()
 MODEL=model
 
