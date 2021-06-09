@@ -2,7 +2,7 @@ absl-py==0.7.1
 astor==0.8.0
 cmake==3.14.4
 decorator==4.4.0
-Django==2.2.4
+Django==2.2.22
 django-appconf==1.0.3
 django-extensions==2.2.1
 django-html==0.1.0
