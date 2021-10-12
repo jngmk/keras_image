@@ -19,7 +19,7 @@ Keras-Preprocessing==1.1.0
 Markdown==3.1.1
 networkx==2.3
 numpy==1.17.0
-opencv-python==4.1.0.25
+opencv-python==4.2.0.32
 openface==0.2.1
 pandas==0.25.0
 pilkit==2.0
